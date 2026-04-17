@@ -9,10 +9,10 @@
 ### Scene Rules
 
 * Only one person may edit the scene at a time
-* Announce “scene lock” before editing
+* Announce “scene lock” before editing in discord chat
 * Pull latest before making scene changes
 * Commit and push immediately after edits
-* Announce “scene free” when done
+* Announce “scene free” when done 
 
 ### Goal
 

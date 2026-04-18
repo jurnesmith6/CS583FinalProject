@@ -2,8 +2,7 @@
 
 Group Project for CS583 - 3D Game Programming
 
-### 3D Group review 
-{
+### 3D Group review
 
 **Name of game :** Not decided yet
 
@@ -24,6 +23,3 @@ Role 1: Player controller + Enemy AI  (Project Execution) - <br>
 Role 2: Level design + Lighting (2 types) + Camera (Project Execution) - <br>
 Role 3: Menus + UI + Game states + GitHub management (Project Execution + Code/Submission) - (Jurne)<br>
 Role 4: Animations + Audio + VFX + Presentation video (Project Execution + presentation) - <br>
-
-}
-

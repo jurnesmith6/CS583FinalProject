@@ -19,7 +19,7 @@ Group Project for CS583 - 3D Game Programming
   
 **General goals for each person (such as art/animation/level design):**
 
-Role 1: Player controller + Enemy AI  (Project Execution) - <br>
-Role 2: Level design + Lighting (2 types) + Camera (Project Execution) - <br>
-Role 3: Menus + UI + Game states + GitHub management (Project Execution + Code/Submission) - (Jurne)<br>
-Role 4: Animations + Audio + VFX + Presentation video (Project Execution + presentation) - <br>
+Role 1 (Jiovanny) : Player controller + Enemy AI  (Project Execution)<br>
+Role 2 (Gedle) : Level design + Lighting (2 types) + Camera (Project Execution)<br>
+Role 3 (Jurne) : Menus + UI + Game states + GitHub management (Project Execution + Code/Submission)<br>
+Role 4 (Matthew) : Animations + Audio + VFX + Presentation video (Project Execution + presentation)<br>

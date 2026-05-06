@@ -1,19 +1,65 @@
 ## Unity Team Workflow Rules
 
-### General Workflow
+---
 
-* Always pull before starting work
-* Work on scripts/prefabs freely
-* Commit and push small changes often
+# Branch Structure
 
-### Scene Rules
+- `main` → final submission only (do not work directly here)
+- `dev` → main integration branch for active development
+- `feature/*` → individual short-lived branches for tasks
 
-* Only one person may edit the scene at a time
-* Announce “scene lock” before editing in discord chat
-* Pull latest before making scene changes
-* Commit and push immediately after edits
-* Announce “scene free” when done 
+---
 
-### Goal
+# General Workflow
 
-Avoid merge conflicts and keep the project stable during collaboration.
+- Always branch from `dev`
+- Always pull latest `dev` before starting work
+- Work in feature branches, not directly in `dev`
+- Commit small changes often (avoid huge commits)
+- Merge feature branches into `dev` when the feature is functional
+- Delete feature branch after successful merge (for cleanliness, optional but recommended)
+- Do not modify other people's files without prior communication/approval
+
+---
+
+# Integration Rules (IMPORTANT)
+
+- `dev` must ALWAYS remain in a playable state
+- Merge feature branches into `dev` frequently (do not wait until end of sprint)
+- At minimum, integrate and test `dev` once per day as a team
+- If `dev` breaks, it must be fixed immediately before continuing new work
+
+---
+
+# Scene Rules (Unity Critical)
+
+- Only one person may edit `Main_Scene` at a time
+- Announce "Main_Scene LOCKED" in Discord before editing
+- Pull latest `dev` before making any scene changes
+- Push and commit immediately after scene edits
+- Announce "Main_Scene FREE" when done
+- All experimentation must be done in personal test scenes (NOT Main_Scene)
+
+---
+
+# Testing Rules
+
+- Each developer should use a personal test scene for system development
+- Prefabs should be used for all major systems (UI, enemies, VFX, etc.)
+- Integration into `Main_Scene` happens only after features are functional
+
+---
+
+# Communication Rules
+
+- Announce when:
+  - you lock/unlock Main_Scene
+  - you are merging into `dev`
+  - you are working on shared systems
+- Communicate before touching shared or cross-system files
+
+---
+
+# Goal
+
+Maintain a stable, always-playable `dev` branch and avoid Unity scene conflicts while enabling fast parallel development during the 2-day sprint.

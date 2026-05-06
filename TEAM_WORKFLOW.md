@@ -61,4 +61,4 @@
 
 # Goal
 
-Maintain a stable, always-playable `dev` branch and avoid Unity scene conflicts while enabling fast parallel development during the 2-day sprint.
+Maintain a stable, always-playable `dev` branch and avoid Unity scene conflicts while enabling fast parallel development.

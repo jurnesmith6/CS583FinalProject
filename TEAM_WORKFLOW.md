@@ -26,7 +26,6 @@
 
 - `dev` must ALWAYS remain in a playable state
 - Merge feature branches into `dev` frequently 
-- At minimum, integrate and test `dev` once per day as a team
 - If `dev` breaks, it must be fixed immediately before continuing new work
 
 ---

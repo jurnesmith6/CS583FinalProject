@@ -26,7 +26,6 @@
 
 - `dev` must ALWAYS remain in a playable state
 - Merge feature branches into `dev` frequently 
-- At minimum, integrate and test `dev` once per day as a team
 - If `dev` breaks, it must be fixed immediately before continuing new work
 
 ---
@@ -62,4 +61,4 @@
 
 # Goal
 
-Maintain a stable, always-playable `dev` branch and avoid Unity scene conflicts while enabling fast parallel development during the 2-day sprint.
+Maintain a stable, always-playable `dev` branch and avoid Unity scene conflicts while enabling fast parallel development.

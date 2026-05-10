@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     public GameObject hud;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public GameObject audioSettings;
 
     void Update()
     {
@@ -23,7 +24,12 @@ public class UIManager : MonoBehaviour
             case GameState.GameOver:
                 Show(gameOverMenu);
                 break;
+            case GameState.Audio:
+                Show(audioSettings);
+                break;
         }
+        
+        
     }
 
     void Show(GameObject panel)
@@ -32,5 +38,7 @@ public class UIManager : MonoBehaviour
         hud.SetActive(panel == hud);
         pauseMenu.SetActive(panel == pauseMenu);
         gameOverMenu.SetActive(panel == gameOverMenu);
+        audioSettings.SetActive(panel ==  audioSettings);
+        
     }
 }

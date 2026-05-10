@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6354bd653b6643aeaabe719cf777c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  mainMenu: {fileID: 0}
-  hud: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  gameOverMenu: {fileID: 0}
+  mainMenu: {fileID: 7507494362859900167, guid: 303af7a9581aa4e11a209fc5f33f4e02, type: 3}
+  hud: {fileID: 7207586494899284887, guid: 5ff7f7be29a414eeebdcfff7930cbe28, type: 3}
+  pauseMenu: {fileID: 5272010797610512397, guid: 44e87a698973c4c89947030eff0b1e55, type: 3}
+  gameOverMenu: {fileID: 2153796737924865328, guid: 866def9dce9e34fad847dc87c88810ba, type: 3}
+  audioSettings: {fileID: 2973650303757819826, guid: 2bb9aa86184be40e0854aa99c1e3d266, type: 3}

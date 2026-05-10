@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
     MainMenu,
     Playing,
     Paused,
-    GameOver
+    GameOver,
+    Audio
 }
 
 public class GameManager : MonoBehaviour
@@ -28,9 +30,52 @@ public class GameManager : MonoBehaviour
     {
         currentState = newState;
         Debug.Log("State changed to: " + newState);
-        Time.timeScale = (newState == GameState.Paused) ? 0 : 1;
+        
+        switch (newState)
+        {
+            case GameState.Playing:
+                Time.timeScale = 1f;
+                break;
+            default:
+                Time.timeScale = 0f;
+                break;
+        }
+        
+        //Time.timeScale = (newState == GameState.Paused || newState == GameState.MainMenu || newState == GameState.Audio) ? 0 : 1;
     }
-    
+
+    public void playGame()
+    {
+        SetState(GameState.Playing);
+    }
+
+    public void resumeGame()
+    {
+        SetState(GameState.Playing);
+    }
+
+    public void reloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void audioSettings()
+    {
+        SetState(GameState.Audio);
+    }
+
+    public void gameOver()
+    {
+        //when player health or crystal health < 0;
+    }
+
+    public void changePlayerHealth()
+    {
+        //when player receives damage
+        
+        
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))

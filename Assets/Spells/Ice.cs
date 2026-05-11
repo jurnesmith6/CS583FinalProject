@@ -1,17 +1,19 @@
 using UnityEngine;
 
 public class Ice : Spell {
+    [SerializeField] float speed;
+
     protected override void CastImpl() {
         Vector3 position = PlayerController.instance.transform.position;
-        Vector3 forward = PlayerController.instance.transform.forward;
+        Vector3 direction =  PlayerController.instance.GetDirectionFacing();
 
         Rigidbody ice = Instantiate(
             gameObject,
-            position + forward,
-            Quaternion.LookRotation(forward)
+            position + direction,
+            Quaternion.LookRotation(direction)
         ).GetComponent<Rigidbody>();
 
-        ice.linearVelocity = forward * 10f;
+        ice.linearVelocity = direction * speed;
     }
 
     void OnTriggerEnter(Collider other) {
@@ -19,5 +21,6 @@ public class Ice : Spell {
         if (enemy == null) return;
 
         enemy.TakeDamage(vulnerableEnemies.Contains(enemy.type) ? damage : damage / 3f);
+        Destroy(gameObject);
     }
 }

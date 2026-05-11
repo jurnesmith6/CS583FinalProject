@@ -1788,10 +1788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2997ca79d638b86488fe03970c1531f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  avgMoveSpeed: 4
-  moveSpeedSD: 0.4
+  avgMoveSpeed: 2.8
+  moveSpeedSD: 0.3
   attackRange: 5
-  hp: 30
+  type: 1
+  hp: 35
 --- !u!54 &7220391974332929847
 Rigidbody:
   m_ObjectHideFlags: 0

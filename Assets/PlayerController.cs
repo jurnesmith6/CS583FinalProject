@@ -5,15 +5,22 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Camera mainCamera;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform character;
-    
+    [SerializeField] Spell[] spells;
+
+    public static PlayerController instance;
     public float moveSpeed = 10f;
 
     InputSystemActions input;
     Vector2 moveInput = Vector2.zero;
     Vector3 forwardDirection, rightDirection;
     Rigidbody rb;
+    bool attacking = false;
+    Spell spell;
 
     void Awake() {
+        instance = this;
+        spell = spells[0];
+
         forwardDirection = mainCamera.transform.forward;
         forwardDirection.y = 0;
         forwardDirection.Normalize();
@@ -25,6 +32,9 @@ public class PlayerController : MonoBehaviour {
 
         input.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        input.Player.Attack.performed += ctx => attacking = true;
+        input.Player.Attack.canceled += ctx => attacking = false;
+        input.Player.SpellSwitch.performed += ctx => spell = spells[int.Parse(ctx.control.name) - 1];
 
         input.Enable();
     }
@@ -32,6 +42,11 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         Vector3 reoriented = forwardDirection * moveInput.y + rightDirection * moveInput.x;
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * reoriented);
+
+        Spell.CooldownUpdate();
+
+        if (attacking)
+            spell.Cast();
     }
 
     void Update() {
@@ -62,5 +77,9 @@ public class PlayerController : MonoBehaviour {
             return hit.point;
 
         return mainCamera.transform.position;
+    }
+
+    public Vector3 GetDirectionFacing() {
+        return character.forward;
     }
 }

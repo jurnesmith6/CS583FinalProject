@@ -6,12 +6,22 @@ public class Enemy : MonoBehaviour {
     [SerializeField] float moveSpeedSD;
     [SerializeField] float attackRange;
 
+    public EnemyType type;
     public float hp;
     Rigidbody rb;
     float moveSpeed;
 
     Vector3 crystalPosition = Vector3.zero;
     Vector3 crystalDirection;
+
+    public void TakeDamage(float amount) {
+        hp -= amount;
+
+        if (hp <= 0f) {
+            Destroy(gameObject);
+            Spawner.instance.EnemyKilled();
+        }
+    }
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();

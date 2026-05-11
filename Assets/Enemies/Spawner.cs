@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour {
+    public static Spawner instance { get; private set; }
     public Enemy[] enemies;
     public float spawnRadius;
     public float forstEdgeDistance;
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour {
     int enemiesRemaining;
 
     void Start() {
+        instance = this;
         Invoke("StartWave", 5f);
     }
 

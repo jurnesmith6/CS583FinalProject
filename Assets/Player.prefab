@@ -190,6 +190,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   character: {fileID: 3446560103682880277}
+  spells:
+  - {fileID: 5630412934880866346, guid: 644a5bcbe57ebc0449e636ee917df79d, type: 3}
+  - {fileID: 1570496253274316313, guid: 8aa9a76b1a750fe46b2cff8272becdd5, type: 3}
   moveSpeed: 15
 --- !u!54 &629755749548868126
 Rigidbody:
@@ -200,7 +203,7 @@ Rigidbody:
   m_GameObject: {fileID: 1184646468673692386}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 10
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

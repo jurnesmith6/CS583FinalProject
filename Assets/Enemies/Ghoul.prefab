@@ -201,7 +201,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2424612215923613709}
   - component: {fileID: 2170532650086163332}
-  m_Layer: 0
+  - component: {fileID: 6816324288532770463}
+  - component: {fileID: -9175441605564520591}
+  m_Layer: 7
   m_Name: Ghoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 673840565766905384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -0, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -251,6 +253,49 @@ Animation:
   m_AnimatePhysics: 1
   m_UpdateMode: 0
   m_CullingType: 1
+--- !u!114 &6816324288532770463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673840565766905384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2997ca79d638b86488fe03970c1531f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  avgMoveSpeed: 5
+  moveSpeedSD: 0.5
+  attackRange: 3
+  hp: 10
+--- !u!54 &-9175441605564520591
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673840565766905384}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &872297733483764228
 GameObject:
   m_ObjectHideFlags: 0

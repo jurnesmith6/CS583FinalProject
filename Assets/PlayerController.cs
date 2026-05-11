@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         Vector3 reoriented = forwardDirection * moveInput.y + rightDirection * moveInput.x;
-        rb.MovePosition(character.position + moveSpeed * Time.deltaTime * reoriented);
+        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * reoriented);
     }
 
     void Update() {

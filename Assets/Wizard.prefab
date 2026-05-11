@@ -1505,7 +1505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1672846481383962105}
   - component: {fileID: 7421957400910752439}
-  - component: {fileID: 9037839256061685826}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -1552,29 +1551,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &9037839256061685826
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6442411093483854240}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32713547
-  m_Height: 1.8772755
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!1 &6512222451123976055
 GameObject:
   m_ObjectHideFlags: 0

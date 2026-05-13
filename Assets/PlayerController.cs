@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour {
 
     public static PlayerController instance;
     public float moveSpeed;
-    public float hp;
+    public float maxHp;
+    public float hp { private set; get; }
     public float knockbackForce;
     public Rigidbody rb { private set; get; }
     public Vector3 movementVelocity { private set; get; }
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
         instance = this;
         spell = spells[0];
+        hp = maxHp;
 
         forwardDirection = mainCamera.transform.forward;
         forwardDirection.y = 0;

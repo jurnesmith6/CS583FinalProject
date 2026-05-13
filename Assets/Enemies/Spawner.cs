@@ -12,11 +12,11 @@ public class Spawner : MonoBehaviour {
     public int wave { get; private set; } = 1;
     public float timeBetweenWaves;
     public string enemyFormula;
+    public int enemiesRemaining;
 
     Vector3 center = Vector3.zero;
     Vector3 attackDirection;
     Vector3 spawnLocation;
-    int enemiesRemaining;
     DataTable dataTable = new();
 
     void Start() {

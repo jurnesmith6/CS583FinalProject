@@ -5,9 +5,13 @@ public class Enemy : MonoBehaviour {
     // Standard deviation for move speed. 68% of move speeds will be within 1 moveSpeedSD from averageMoveSpeed, 95% within 2, and 99.7% within 3.
     [SerializeField] float moveSpeedSD;
     [SerializeField] float attackRange;
+    [SerializeField] float attackCooldown;
+    [SerializeField] int crystalDamage;
 
     public EnemyType type;
     public float hp;
+    float attackTimer = 0f;
+
     Rigidbody rb;
     float moveSpeed;
     bool dead = false;
@@ -42,7 +46,16 @@ public class Enemy : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if ((crystalPosition - rb.position).magnitude > attackRange)
+        if ((crystalPosition - rb.position).magnitude > attackRange) {
             rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * crystalDirection.normalized);
+            return;
+        }
+
+        attackTimer = Mathf.Max(0f, attackTimer - Time.fixedDeltaTime);
+
+        if (attackTimer <= 0f) {
+            Crystal.TakeDamage(crystalDamage);
+            attackTimer = attackCooldown;
+        }
     }
 }

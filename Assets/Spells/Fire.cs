@@ -6,11 +6,13 @@ public class Fire : Spell {
 
     protected override void CastImpl() {
         Vector3 position = PlayerController.instance.transform.position;
+        Vector3 playerForward = PlayerController.instance.GetDirectionFacing();
+
         Vector3 direction = Quaternion.Euler(
             0f,
             Util.NormalDist(0f, 5.5f),
             0f
-        ) * PlayerController.instance.GetDirectionFacing();
+        ) * playerForward;
 
         Rigidbody fire = Instantiate(
             gameObject,
@@ -18,7 +20,9 @@ public class Fire : Spell {
             Quaternion.LookRotation(direction)
         ).GetComponent<Rigidbody>();
 
-        fire.linearVelocity = direction * Util.NormalDist(avgSpeed, speedSD);
+        // projection of players movement velocity onto their facing direction
+        float movementWithFire = Mathf.Max(0f, Vector3.Dot(PlayerController.instance.movementVelocity, playerForward));
+        fire.linearVelocity = direction * (Util.NormalDist(avgSpeed, speedSD) + movementWithFire);
     }
 
     void OnTriggerEnter(Collider other) {

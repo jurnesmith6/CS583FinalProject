@@ -5,15 +5,18 @@ public class Ice : Spell {
 
     protected override void CastImpl() {
         Vector3 position = PlayerController.instance.transform.position;
-        Vector3 direction =  PlayerController.instance.GetDirectionFacing();
+        Vector3 playerForward =  PlayerController.instance.GetDirectionFacing();
 
         Rigidbody ice = Instantiate(
             gameObject,
-            position + direction,
-            Quaternion.LookRotation(direction)
+            position + playerForward,
+            Quaternion.LookRotation(playerForward)
         ).GetComponent<Rigidbody>();
 
-        ice.linearVelocity = direction * speed;
+        ice.linearVelocity = playerForward * speed;
+
+        float movementWithProjectile = Mathf.Max(0f, Vector3.Dot(PlayerController.instance.movementVelocity, playerForward));
+        ice.linearVelocity = playerForward * (speed + movementWithProjectile);
     }
 
     void OnTriggerEnter(Collider other) {

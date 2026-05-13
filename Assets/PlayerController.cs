@@ -8,14 +8,19 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Spell[] spells;
 
     public static PlayerController instance;
-    public float moveSpeed = 10f;
+    public float moveSpeed;
+    public float hp;
+    public float knockbackForce;
+    public Rigidbody rb { private set; get; }
+    public Vector3 movementVelocity { private set; get; }
 
     InputSystemActions input;
     Vector2 moveInput = Vector2.zero;
     Vector3 forwardDirection, rightDirection;
-    Rigidbody rb;
     bool attacking = false;
     Spell spell;
+    float hitStunDuration = 0.75f;
+    float invincibilityDuration = 0f;
 
     void Awake() {
         instance = this;
@@ -40,13 +45,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        Vector3 reoriented = forwardDirection * moveInput.y + rightDirection * moveInput.x;
-        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * reoriented);
-
         Spell.CooldownUpdate();
+        invincibilityDuration = Mathf.Max(0f, invincibilityDuration - Time.fixedDeltaTime);
+
+        if (hitStunDuration > 0f) {
+            hitStunDuration -= Time.fixedDeltaTime;
+            return;
+        }
 
         if (attacking)
             spell.Cast();
+
+        movementVelocity = moveSpeed * (forwardDirection * moveInput.y + rightDirection * moveInput.x);
+        rb.MovePosition(rb.position + Time.fixedDeltaTime * movementVelocity);
     }
 
     void Update() {
@@ -81,5 +92,17 @@ public class PlayerController : MonoBehaviour {
 
     public Vector3 GetDirectionFacing() {
         return character.forward;
+    }
+
+    public void OnCollisionStay(Collision collision) {
+        if (invincibilityDuration > 0f || collision.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
+
+        --hp;
+        invincibilityDuration = 1.5f;
+        hitStunDuration = 0.5f;
+        
+        rb.linearVelocity = Vector3.zero;
+        Vector3 knockbackDirection = (transform.position - collision.transform.position).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
     }
 }

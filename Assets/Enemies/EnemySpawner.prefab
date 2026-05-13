@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27968a1265b12484d855fdd3ccd2df13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  enemies:
+  - {fileID: 6816324288532770463, guid: 49a0d8f5c5426dc46a1213d79763471e, type: 3}
+  - {fileID: -541375310251671399, guid: 7e8efe03ebc51034db4367bead81165d, type: 3}
+  spawnRadius: 40
+  forestEdgeDistance: 55
+  spawnInterval: 0.25

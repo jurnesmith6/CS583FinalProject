@@ -633,29 +633,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: spawnRadius
-      value: 50
+      propertyPath: enemyFormula
+      value: 5 + 2.5 * x
       objectReference: {fileID: 0}
-    - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: spawnInterval
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: forstEdgeDistance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: enemies.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: 'enemies.Array.data[0]'
-      value: 
-      objectReference: {fileID: 6816324288532770463, guid: 49a0d8f5c5426dc46a1213d79763471e, type: 3}
-    - target: {fileID: 6806054586450942819, guid: 63217e81716a7254f9e5f7d33280b0ac, type: 3}
-      propertyPath: 'enemies.Array.data[1]'
-      value: 
-      objectReference: {fileID: -541375310251671399, guid: 7e8efe03ebc51034db4367bead81165d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

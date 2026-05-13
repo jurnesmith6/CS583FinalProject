@@ -10,14 +10,18 @@ public class Enemy : MonoBehaviour {
     public float hp;
     Rigidbody rb;
     float moveSpeed;
+    bool dead = false;
 
     Vector3 crystalPosition = Vector3.zero;
     Vector3 crystalDirection;
 
     public void TakeDamage(float amount) {
+        if (dead) return;
+
         hp -= amount;
 
         if (hp <= 0f) {
+            dead = true;
             Destroy(gameObject);
             Spawner.instance.EnemyKilled();
         }

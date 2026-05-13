@@ -1,29 +1,34 @@
 using System.Collections;
+using System.Data;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour {
     public static Spawner instance { get; private set; }
     public Enemy[] enemies;
     public float spawnRadius;
-    public float forstEdgeDistance;
+    public float forestEdgeDistance;
     public float spawnInterval;
+    public float firstWaveDelay;
     public int wave { get; private set; } = 1;
+    public float timeBetweenWaves;
+    public string enemyFormula;
 
     Vector3 center = Vector3.zero;
     Vector3 attackDirection;
     Vector3 spawnLocation;
     int enemiesRemaining;
+    DataTable dataTable = new();
 
     void Start() {
         instance = this;
-        Invoke("StartWave", 5f);
+        Invoke("StartWave", firstWaveDelay);
     }
 
     // start spawning enemies in the forest from a random direction
     public void StartWave() {
-        enemiesRemaining = 10 * wave;
+        enemiesRemaining = System.Convert.ToInt32(dataTable.Compute(enemyFormula.Replace("x", (wave - 1).ToString()), null));
         attackDirection = Random.insideUnitCircle.normalized;
-        spawnLocation = center + new Vector3(attackDirection.x, 0f, attackDirection.y) * (forstEdgeDistance + spawnRadius);
+        spawnLocation = center + new Vector3(attackDirection.x, 0f, attackDirection.y) * (forestEdgeDistance + spawnRadius);
 
         StartCoroutine(SpawnEnemies());
     }
@@ -47,7 +52,7 @@ public class Spawner : MonoBehaviour {
     public void EnemyKilled() {
         if (--enemiesRemaining <= 0) {
             ++wave;
-            Invoke("StartWave", 5f);
+            Invoke("StartWave", timeBetweenWaves);
         }
     }
 }

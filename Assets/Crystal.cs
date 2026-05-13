@@ -1,9 +1,14 @@
 using UnityEngine;
 
 public class Crystal : MonoBehaviour {
-    public static int hitpoints;
+    static Crystal instance;
+    public int hitpoints;
+
+    void Awake() {
+        instance = this;
+    }
 
     public static void TakeDamage(int damage) {
-        hitpoints -= damage;
+        instance.hitpoints -= damage;
     }
 }

@@ -1,3 +1,4 @@
+// Assets/Dev/Matthew/SFX/SFXManager.cs
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour
@@ -19,9 +20,22 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip iceSingle;
     [SerializeField] private AudioClip iceHold;
 
-    private AudioSource sfxSource;       // one-shots
-    private AudioSource loopSource;      // looping hold sounds
+    [Header("Enemy Sounds")]
+    [SerializeField] private AudioClip ogres;
+    [SerializeField] private AudioClip zombies;
+    [SerializeField] private float enemySoundInterval = 5f;
+
+    [Header("Player")]
+    [SerializeField] private AudioClip running;
+
+    [Header("Combat")]
+    [SerializeField] private AudioClip damage;
+
+    private AudioSource sfxSource;
+    private AudioSource loopSource;
+    private AudioSource runSource;
     private float sfxVolume = 1f;
+    private float enemySoundTimer = 0f;
 
     void Awake()
     {
@@ -37,13 +51,28 @@ public class SFXManager : MonoBehaviour
 
         loopSource = gameObject.AddComponent<AudioSource>();
         loopSource.loop = true;
+
+        runSource = gameObject.AddComponent<AudioSource>();
+        runSource.loop = true;
     }
 
-    // Volume control for menu
+    void Update()
+    {
+        // Randomly play ogre or zombie sounds at intervals
+        enemySoundTimer -= Time.deltaTime;
+        if (enemySoundTimer <= 0f)
+        {
+            PlayRandomEnemySound();
+            enemySoundTimer = enemySoundInterval + Random.Range(-1f, 2f);
+        }
+    }
+
+    // Volume control for menu dev
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
         loopSource.volume = sfxVolume;
+        runSource.volume = sfxVolume;
     }
 
     public float GetSFXVolume()
@@ -51,17 +80,17 @@ public class SFXManager : MonoBehaviour
         return sfxVolume;
     }
 
-    // Menu
+    // --- Menu ---
     public void PlayButtonClick() { PlayOneShot(buttonClick); }
 
-    // Crystal
+    // --- Crystal ---
     public void PlayCrystalDamage()
     {
         AudioClip clip = Random.value > 0.5f ? crystalDamage1 : crystalDamage2;
         PlayOneShot(clip);
     }
 
-    // Fire
+    // --- Fire ---
     public void PlayFireSingle() { PlayOneShot(fireSingle); }
 
     public void StartFireHold()
@@ -74,7 +103,7 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    // Ice
+    // --- Ice ---
     public void PlayIceSingle() { PlayOneShot(iceSingle); }
 
     public void StartIceHold()
@@ -87,10 +116,36 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    // Stop looping the sound
+    // --- Stop any looping spell sound ---
     public void StopHoldSound()
     {
         loopSource.Stop();
+    }
+
+    // --- Running ---
+    public void StartRunning()
+    {
+        if (!runSource.isPlaying)
+        {
+            runSource.clip = running;
+            runSource.volume = sfxVolume;
+            runSource.Play();
+        }
+    }
+
+    public void StopRunning()
+    {
+        runSource.Stop();
+    }
+
+    // --- Enemy Damage ---
+    public void PlayDamage() { PlayOneShot(damage); }
+
+    // --- Random Enemy Ambient ---
+    private void PlayRandomEnemySound()
+    {
+        AudioClip clip = Random.value > 0.5f ? ogres : zombies;
+        PlayOneShot(clip);
     }
 
     private void PlayOneShot(AudioClip clip)

@@ -4,7 +4,7 @@ Group Project for CS583 - 3D Game Programming
 
 ### 3D Group review
 
-**Name of game :** Not decided yet
+**Name of game :** CRYSTAL DEFENDER
 
 **Names of group members :**
 

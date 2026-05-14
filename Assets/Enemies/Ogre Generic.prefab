@@ -1791,7 +1791,7 @@ MonoBehaviour:
   avgMoveSpeed: 2.8
   moveSpeedSD: 0.3
   attackRange: 5
-  attackCooldown: 5
+  attackCooldown: 2
   crystalDamage: 0
   type: 1
   hp: 35

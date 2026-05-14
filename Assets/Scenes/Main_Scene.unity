@@ -598,6 +598,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: resumeGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1203525714488176139, guid: 7b9d2ff6d623f48e6967d8e19515de57, type: 3}
+      propertyPath: m_text
+      value: 'CRYSTAL DEFENDER
+
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 2479093318633534968, guid: 7b9d2ff6d623f48e6967d8e19515de57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

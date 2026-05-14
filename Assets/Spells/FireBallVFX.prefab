@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6378876264308494960}
-  - component: {fileID: -170507237084326173}
-  - component: {fileID: 5144873756090638304}
   m_Layer: 0
   m_Name: FireBallVFX
   m_TagString: Untagged
@@ -36,51 +34,6 @@ Transform:
   - {fileID: 1672797134130774968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-170507237084326173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546106968658812065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a6d2e96fb489f4cb9915f330579bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Fire
-  cooldown: 0.05
-  vulnerableEnemies: 00000000
-  damage: 0.35
-  lifeTime: 0.75
-  avgSpeed: 10
-  speedSD: 3
---- !u!54 &5144873756090638304
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546106968658812065}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2800021594417773295
 GameObject:
   m_ObjectHideFlags: 0

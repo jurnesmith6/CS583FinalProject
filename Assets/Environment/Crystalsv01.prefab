@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caef969af1381e1bcb12d179c2d7f36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crystal
-  hitpoints: 100
+  hitpoints: 50
 --- !u!1 &6119050843846310975
 GameObject:
   m_ObjectHideFlags: 0

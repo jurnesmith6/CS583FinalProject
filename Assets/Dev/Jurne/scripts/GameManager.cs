@@ -96,8 +96,6 @@ public class GameManager : MonoBehaviour
 		if(player.hp <= 0 || crystal.hitpoints <=0 )
 			SetState(GameState.GameOver);
 
-
-
     }
 
 

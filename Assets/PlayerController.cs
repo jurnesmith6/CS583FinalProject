@@ -5,15 +5,30 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Camera mainCamera;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform character;
-    
-    public float moveSpeed = 10f;
+    [SerializeField] Spell[] spells;
+
+    public float contactDamage;
+    public static PlayerController instance;
+    public float moveSpeed;
+    public float maxHp;
+    public float hp { private set; get; }
+    public float knockbackForce;
+    public Rigidbody rb { private set; get; }
+    public Vector3 movementVelocity { private set; get; }
 
     InputSystemActions input;
     Vector2 moveInput = Vector2.zero;
     Vector3 forwardDirection, rightDirection;
-    Rigidbody rb;
+    bool attacking = false;
+    Spell spell;
+    float hitStunDuration = 0.75f;
+    float invincibilityDuration = 0f;
 
     void Awake() {
+        instance = this;
+        spell = spells[0];
+        hp = maxHp;
+
         forwardDirection = mainCamera.transform.forward;
         forwardDirection.y = 0;
         forwardDirection.Normalize();
@@ -25,13 +40,27 @@ public class PlayerController : MonoBehaviour {
 
         input.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        input.Player.Attack.performed += ctx => attacking = true;
+        input.Player.Attack.canceled += ctx => attacking = false;
+        input.Player.SpellSwitch.performed += ctx => spell = spells[int.Parse(ctx.control.name) - 1];
 
         input.Enable();
     }
 
     void FixedUpdate() {
-        Vector3 reoriented = forwardDirection * moveInput.y + rightDirection * moveInput.x;
-        rb.MovePosition(character.position + moveSpeed * Time.deltaTime * reoriented);
+        Spell.CooldownUpdate();
+        invincibilityDuration = Mathf.Max(0f, invincibilityDuration - Time.fixedDeltaTime);
+
+        if (hitStunDuration > 0f) {
+            hitStunDuration -= Time.fixedDeltaTime;
+            return;
+        }
+
+        if (attacking)
+            spell.Cast();
+
+        movementVelocity = moveSpeed * (forwardDirection * moveInput.y + rightDirection * moveInput.x);
+        rb.MovePosition(rb.position + Time.fixedDeltaTime * movementVelocity);
     }
 
     void Update() {
@@ -62,5 +91,21 @@ public class PlayerController : MonoBehaviour {
             return hit.point;
 
         return mainCamera.transform.position;
+    }
+
+    public Vector3 GetDirectionFacing() {
+        return character.forward;
+    }
+
+    public void OnCollisionStay(Collision collision) {
+        if (invincibilityDuration > 0f || collision.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
+
+        hp -= contactDamage;
+        invincibilityDuration = 1.5f;
+        hitStunDuration = 0.5f;
+        
+        rb.linearVelocity = Vector3.zero;
+        Vector3 knockbackDirection = (transform.position - collision.transform.position).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
     }
 }

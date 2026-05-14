@@ -1,7 +1,14 @@
 using UnityEngine;
 
 public class Crystal : MonoBehaviour {
-    void Update() {
-        transform.Rotate(Vector3.up, Time.deltaTime * 180f, Space.World);
+    static Crystal instance;
+    public int hitpoints;
+
+    void Awake() {
+        instance = this;
+    }
+
+    public static void TakeDamage(int damage) {
+        instance.hitpoints -= damage;
     }
 }

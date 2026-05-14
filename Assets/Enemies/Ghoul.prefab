@@ -269,6 +269,9 @@ MonoBehaviour:
   avgMoveSpeed: 5
   moveSpeedSD: 0.5
   attackRange: 3
+  attackCooldown: 0
+  crystalDamage: 1
+  type: 0
   hp: 10
 --- !u!54 &-9175441605564520591
 Rigidbody:

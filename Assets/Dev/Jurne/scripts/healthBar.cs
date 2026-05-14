@@ -12,7 +12,7 @@ public class healthBar : MonoBehaviour
     public Image playerHealthBar;
     public Image crystalHealthBar;
     
-    float maxHealth = 100f;
+    float maxHealth = 5f;
 
     void Update()
     {

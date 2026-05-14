@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+	public PlayerController player; 
+
     public GameState currentState;
+
+	public Crystal crystal;
 
     void Awake()
     {
@@ -67,6 +71,8 @@ public class GameManager : MonoBehaviour
     public void gameOver()
     {
         //when player health or crystal health < 0;
+
+
     }
 
     public void changePlayerHealth()
@@ -86,5 +92,13 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
             SetState(GameState.GameOver);
+
+		if(player.hp <= 0 || crystal.hitpoints <=0 )
+			SetState(GameState.GameOver);
+
+
+
     }
+
+
 }

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Transform character;
     [SerializeField] Spell[] spells;
 
+    public float contactDamage;
     public static PlayerController instance;
     public float moveSpeed;
     public float maxHp;
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour {
     public void OnCollisionStay(Collision collision) {
         if (invincibilityDuration > 0f || collision.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
 
-        --hp;
+        hp -= contactDamage;
         invincibilityDuration = 1.5f;
         hitStunDuration = 0.5f;
         
